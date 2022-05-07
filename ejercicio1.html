@@ -52,10 +52,39 @@
         console.log(form)
         form.addEventListener("submit", function(event){
             event.preventDefault()
-            alert("click")
-            
+           let resultado = validarFormulario()
+
+           if (resultado) {
+               alert("exito")
+           }
+           else{
+               alert("Se requiere el nombre")
+           }
+
         })
 
+        //retornara true or false
+        function validarFormulario() {
+            let nombre = document.getElementById("nombre").value;            
+            let formValido = true // se asume que el formulario inicia en true
+            
+            if (nombre=="" || textValido(nombre) == false){
+                formValido = false
+                // alert("falso")
+                document.getElementById("errorNombre").innerHTML = "El nombre es requerido";
+
+            }
+            return formValido
+        
+        }
+
+        function textValido(text){
+            let expression = /([A-Z])/ig
+            let result = expression.test(text)
+            return result
+        }
+
+        console.log(textValido("4444"))
 
 
         
