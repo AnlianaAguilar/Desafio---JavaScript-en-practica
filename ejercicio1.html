@@ -52,13 +52,14 @@
         console.log(form)
         form.addEventListener("submit", function(event){
             event.preventDefault()
+            limpiaErrores()
            let resultado = validarFormulario()
 
            if (resultado) {
-               alert("exito")
+               formularioEnviado()
            }
            else{
-               alert("Se requiere el nombre")
+               alert("Se requiere ingresar informacion en los campos")
            }
 
         })
@@ -104,8 +105,18 @@
             return expression.test(text)
         }
 
+        //funcion para limpiar los errores 
+        function limpiaErrores(){
+            document.querySelector(".errorNombre").innerHTML = "";
+            document.querySelector(".errorAsunto").innerHTML = "";
+            document.querySelector(".errorMensaje").innerHTML = "";
+        }
+
  
-        
+        //funcion para validad que el formulario se envio con extio
+        function formularioEnviado () {
+            document.querySelector(".resultado").innerHTML = "mesaje enviado con exito!!!"
+        }
 
     </script>
 </body>
