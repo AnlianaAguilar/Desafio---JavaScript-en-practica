@@ -65,28 +65,42 @@
 
         //retornara true or false
         function validarFormulario() {
-            let nombre = document.getElementById("nombre").value;            
+            let nombre = document.getElementById("nombre").value;
+            let asunto = document.getElementById("asunto").value;            
             let formValido = true // se asume que el formulario inicia en true
             
             if (nombre=="" || textValido(nombre) == false){
                 formValido = false
-                // alert("falso")
-                document.getElementById("errorNombre").innerHTML = "El nombre es requerido";
-
+                document.querySelector(".errorNombre").innerHTML = "El nombre es requerido";
             }
-            return formValido
-        
-        }
+            if(asunto == "" || asuntoValido(asunto == false)){
+                formValido = false
+                document.querySelector(".errorAsunto").innerHTML = "El asunto es requerido";
+            }
 
+
+            return formValido
+        }
+        //funcion para validadr nombre
         function textValido(text){
-            let expression = /([A-Z])/ig
+            let expression = /^[a-z]+$/i
             let result = expression.test(text)
             return result
         }
 
-        console.log(textValido("4444"))
+        //funcion para Validar asunto
+        function asuntoValido (text){
+            let expression = /([A-Z])+(\s[a-z]+)+/ig
+            let result = expression.test(text)
+            return result
+        }
 
+        // funcion para validar el mensaje
+        function mensajeValido (text){
+            let expression = /([A-Zñáéíóú])+(\s[a-zñáéíóú]+)+/ig
+        }
 
+ 
         
 
     </script>
